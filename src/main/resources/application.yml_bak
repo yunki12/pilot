@@ -1,0 +1,32 @@
+#spring.datasource.url=jdbc:mysql://211.251.235.67:3306/btrade?useUnicode=true&autoReconnect=true&useSSL=false&characterEncoding=utf8
+#spring.datasource.username=blockcom
+#spring.datasource.password=123elql#@!
+#name=Michael
+#spring:
+  #profiles: version2
+#  datasource:
+#    jdbc-url: jdbc:mysql://211.251.235.67:3306/btrade?useUnicode=true&autoReconnect=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+#    username: blockcom
+#    password: 123elql#@!
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#spring.datasource.hikari.jdbc-url=jdbc:mysql://211.251.235.67:3306/btrade?useUnicode=true&autoReconnect=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+#spring.datasource.hikari.username=blockcom
+#spring.datasource.hikari.password=123elql#@!
+#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+#spring.datasource.hikari.connection-timeout=10000
+#spring.datasource.hikari.validation-timeout=10000
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://211.251.235.67:3306/btrade?useUnicode=true&autoReconnect=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+    username: blockcom
+    password: 123elql#@!
+    hikari:
+      idleTimeout: 60000
+      minimumIdle: 2
+      maximumPoolSize: 20
+      connectionTimeout: 30000
+      poolName: MyPoolName
+      connectionTestQuery: SELECT 1

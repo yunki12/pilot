@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<!-- Console Appender -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<!-- File Appender -->
+		<File name="File" fileName="d:/app.log">
+			<PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
+		</File>
+
+	</Appenders>
+
+	<Loggers>
+		<!-- Log everything in custom package -->
+		<Logger name="com.boraji.tutorial.springboot" level="debug" additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger>
+
+		<!-- Log everything in Spring Boot -->
+		<Logger name="org.springframework.boot" level="debug" additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger>
+
+		<!-- Log everything in Spring Core -->
+		<Logger name="org.springframework.core" level="debug" additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger>
+
+		<!-- SQL Logger -->
+		<logger name="jdbc.sqltiming" additivity="false">
+			<level value="debug" />
+			<appender-ref ref="console"/>
+		</logger>
+
+		<logger name="jdbc.sqlonly" additivity="false">
+			<level value="debug"/>
+			<appender-ref ref="console"/>
+		</logger>
+
+		<!--
+		<logger name="jdbc.audit" additivity="false">
+			<level value="debug"/>
+			<appender-ref ref="console"/>
+		</logger>
+
+		<logger name="jdbc.resultset" additivity="false">
+			<level value="debug" />
+			<appender-ref ref="console"/>
+		</logger>
+
+		<logger name="jdbc.resultsettable" additivity="false">
+			<level value="info"/>
+			<appender-ref ref="console"/>
+		</logger>
+		-->
+
+		<Root level="error">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Root>
+
+	</Loggers>
+</Configuration>
