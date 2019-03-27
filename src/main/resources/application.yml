@@ -2,7 +2,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&autoReconnect=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+    jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3306/pilot?useUnicode=true&autoReconnect=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
     username: root
     password: qmffhrzja12!@
     hikari:

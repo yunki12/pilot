@@ -1,6 +1,8 @@
-package com.pilot.pilot.common;
+package com.pilot.pilot.listener;
 
-import com.pilot.pilot.common.service.CommonService;
+import com.pilot.pilot.instatnce.CommonCodeInstatnce;
+import com.pilot.pilot.service.common.service.CommonCodeManagementService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -12,17 +14,20 @@ import org.springframework.stereotype.Component;
  * @author yoongibum
  */
 
+@Slf4j
 @Component
 public class PilotListener implements ApplicationListener<ContextRefreshedEvent>{
 
 	@Autowired
-	private CommonService commonService;
+	private CommonCodeManagementService commonCodeManagementService;
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("onApplicationEvent  ");
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@");
-		commonService.select();
+		try {
+			//commonService.selectCommonCodeList();
+			commonCodeManagementService.setCommonCodeInstance();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

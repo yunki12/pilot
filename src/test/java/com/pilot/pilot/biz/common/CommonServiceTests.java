@@ -1,6 +1,6 @@
-package com.pilot.pilot.common;
+package com.pilot.pilot.biz.common;
 
-import com.pilot.pilot.common.service.CommonService;
+import com.pilot.pilot.biz.common.service.CommonService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,7 +18,11 @@ public class CommonServiceTests {
 	public void select() {
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		System.out.println("select : ");
-		commonService.select();
+		try {
+			commonService.selectCommonCodeList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 	}
 }

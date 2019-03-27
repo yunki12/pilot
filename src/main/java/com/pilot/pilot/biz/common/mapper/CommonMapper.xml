@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pilot.pilot.biz.common.mapper.CommonMapper">
+	<select id="selectList" resultType="com.pilot.pilot.vo.CommonCode">
+		/* selectList */
+		SELECT T1.main_code as main_code
+				,T1.main_code_name as main_code_name
+				,T2.small_code as small_code
+				,T2.small_code_name as small_code_name
+				,T1.use_yn as main_use_yn
+				,T2.use_yn as small_use_yn
+		FROM main_common_code T1
+			,small_common_code T2
+		WHERE T1.main_code = T2.main_code
+		and T2.lang='ko'
+	</select>
+</mapper>
