@@ -13,9 +13,13 @@ import java.util.Map;
  * @author yoongibum
  */
 @Slf4j
-public class CommonCodeInstatnce {
+public class CommonCodeInstance {
 	public static LinkedHashMap mCmmnCodeTables;
 	//private static CommonCodeInstatnce commonCodeInstatnce;
+
+	public CommonCodeInstance() {
+		mCmmnCodeTables = new LinkedHashMap();
+	}
 
 	/**
 	 * DCL(Double-Checked-Locking) Singleton 패턴
@@ -40,12 +44,12 @@ public class CommonCodeInstatnce {
 	 * LazyHolder Singleton 패턴
 	 * @return
 	 */
-	public static CommonCodeInstatnce getCommonCodeInstatnce() {
+	public static CommonCodeInstance getCommonCodeInstance() {
 		return LazyHolder.instance;
 	}
 
 	private static class LazyHolder {
-		private static final CommonCodeInstatnce instance = new CommonCodeInstatnce();
+		private static final CommonCodeInstance instance = new CommonCodeInstance();
 	}
 
 	/**

@@ -1,7 +1,7 @@
 package com.pilot.pilot.service.common.service;
 
 import com.pilot.pilot.biz.common.service.CommonCodeService;
-import com.pilot.pilot.instatnce.CommonCodeInstatnce;
+import com.pilot.pilot.instatnce.CommonCodeInstance;
 import com.pilot.pilot.instatnce.CommonCodeSortingHelper;
 import com.pilot.pilot.instatnce.CommonCodeTable;
 import com.pilot.pilot.vo.CommonCode;
@@ -48,12 +48,12 @@ public class CommonCodeManagementService {
 
 					if (codeList == null) {
 						// 그룹코드는 존재하지만 하위 코드들이 없는 경우
-						log.debug("setCodeIntanceInfo list is null");
+						log.info("setCodeIntanceInfo list is null");
 						continue;
 					}
 
 					CommonCode[] codeDescriptor = new CommonCode[codeList.size()];
-					log.debug("["+ma_cd+"]'s code count : " + codeList.size());
+					log.info("["+ma_cd+"]'s code count : " + codeList.size());
 
 					for (int j = 0, size = codeList.size(); j < size; j++) {
 
@@ -67,11 +67,11 @@ public class CommonCodeManagementService {
 					} // End of for (int j = 0, size = list.size(); j < size; j++)
 
 					// 그룹별 Instance Add
-					CommonCodeInstatnce.getCommonCodeInstatnce();
-					CommonCodeInstatnce.getCommonCodeInstatnce().addCodeTable(new CommonCodeTable(ma_cd, ma_nm, codeDescriptor));
+					//CommonCodeInstance.getCommonCodeInstatnce();
+					CommonCodeInstance.getCommonCodeInstance().addCodeTable(new CommonCodeTable(ma_cd, ma_nm, codeDescriptor));
 
 					log.info("공통코드 Instance Loaded [" + ma_cd + "][" + ma_nm + "] (" + codeList.size() + " codes)");
-					if (CommonCodeInstatnce.getCommonCodeInstatnce() == null) {
+					if (CommonCodeInstance.getCommonCodeInstance() == null) {
 						log.error("공톧코드 getInstance is null... ");
 					}
 

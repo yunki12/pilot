@@ -1,24 +1,22 @@
 package com.pilot.pilot.configuration;
 
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.ApplicationContext;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 
 import javax.sql.DataSource;
 
@@ -29,6 +27,7 @@ import javax.sql.DataSource;
  * @author yoongibum
  */
 @Configuration
+@EnableAutoConfiguration
 @EnableTransactionManagement
 @MapperScan("com.pilot.pilot")
 @Slf4j
@@ -41,7 +40,7 @@ public class DatabaseConfig {
 	}
 
 	@Bean
-	public SqlSessionFactory sqlSessionFactory(DataSource datasource) throws Exception {
+	public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource")DataSource datasource) throws Exception {
 		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
 		sqlSessionFactory.setDataSource(datasource);
 		sqlSessionFactory.setTypeAliasesPackage("com.pilot.pilot");
@@ -53,5 +52,10 @@ public class DatabaseConfig {
 	@Bean
 	public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
+	}
+
+	@Bean(name = "transactionManager")
+	public PlatformTransactionManager transactionManager(@Qualifier("dataSource") DataSource dataSource) {
+		return new DataSourceTransactionManager(dataSource);
 	}
 }

@@ -33,7 +33,7 @@ public class CommonCodeSortingHelper {
 	 */
 	@SuppressWarnings({ "unchecked" })
 	public void add(CommonCode vo) {
-		String istId = vo.getMa_cd();
+		String istId = vo.getMain_code();
 		if (map.containsKey(istId)) {
 			((List<CommonCode>) map.get(istId)).add(vo);
 		} else {

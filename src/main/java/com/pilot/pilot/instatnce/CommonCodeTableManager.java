@@ -1,5 +1,6 @@
 package com.pilot.pilot.instatnce;
 
+import com.pilot.pilot.vo.CommonCode;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Iterator;
@@ -167,7 +168,7 @@ public class CommonCodeTableManager {
 	 * @param code
 	 * @return
 	 */
-	public CommonCodeDescriptor getCodeDescriptor(String groupCode, String code) {
+	public CommonCode getCodeDescriptor(String groupCode, String code) {
 		return getCodeTableForType(groupCode).getCodeDescriptor(code);
 	}
 

@@ -1,6 +1,6 @@
 package com.pilot.pilot.biz.common;
 
-import com.pilot.pilot.biz.common.service.CommonService;
+import com.pilot.pilot.biz.common.service.CommonCodeService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,14 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class CommonServiceTests {
 
 	@Autowired
-	private CommonService commonService;
+	private CommonCodeService commonCodeService;
 
 	@Test
 	public void select() {
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		System.out.println("select : ");
 		try {
-			commonService.selectCommonCodeList();
+			commonCodeService.selectCommonCodeList();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

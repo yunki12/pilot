@@ -1,6 +1,5 @@
 package com.pilot.pilot.listener;
 
-import com.pilot.pilot.instatnce.CommonCodeInstatnce;
 import com.pilot.pilot.service.common.service.CommonCodeManagementService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

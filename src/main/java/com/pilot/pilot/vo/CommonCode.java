@@ -1,6 +1,7 @@
 package com.pilot.pilot.vo;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by 2019-03-27
@@ -17,6 +18,10 @@ public class CommonCode {
 	private String small_code_name; // 상세분류코드명
 	private String main_use_yn; // 대분류사용여부
 	private String small_use_yn; // 상세분류사용여부
+
+	public CommonCode() {
+
+	}
 
 	public CommonCode(String code, String codeNm) {
 		this.code = code;
